@@ -1,0 +1,4 @@
+resource_group_name   = "devstarops-shared-rg"
+storage_account_name  = "dsosharedstorage"
+container_name        = "tfstate"
+key                   = "shared.tfstate"
