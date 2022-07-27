@@ -10,3 +10,8 @@ variable "resource_group_name" {
 variable "environment_name" {
   type = string
 }
+
+variable "github_token" {
+  type = string
+  sensitive = true
+}
