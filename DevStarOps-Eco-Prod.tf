@@ -18,13 +18,22 @@ resource "azurerm_role_assignment" "rg-production-owner" {
   principal_id         = azuread_service_principal.eco-production.object_id
 }
 
-resource "azuread_application_federated_identity_credential" "eco-production" {
+resource "azuread_application_federated_identity_credential" "eco-production-edge" {
   application_object_id = azuread_application.eco-production.object_id  
   display_name          = "devstarops-edge"
   description           = "Deployments for devstarops-edge"
   audiences             = ["api://AzureADTokenExchange"]
   issuer                = "https://token.actions.githubusercontent.com"
   subject               = "repo:DevStarOps/devstarops-edge:environment:production"
+}
+
+resource "azuread_application_federated_identity_credential" "eco-production-profile" {
+  application_object_id = azuread_application.eco-production.object_id  
+  display_name          = "devstarops-profile"
+  description           = "Deployments for devstarops-profile"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-profile:environment:production"
 }
 
 resource "azuread_service_principal_password" "eco-production" {
