@@ -31,6 +31,10 @@ provider "github" {
   token = var.github_token
 }
 
+data "github_user" "current" {
+  username = "devstarops"
+}
+
 output "shared_resource_group" {
   value = data.azurerm_resource_group.shared.name
 }
