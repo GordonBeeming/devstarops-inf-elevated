@@ -27,6 +27,11 @@ resource "azuread_application_federated_identity_credential" "eco-test" {
   subject               = "repo:DevStarOps/devstarops-edge:environment:test"
 }
 
+resource "azuread_service_principal_password" "eco-test" {
+  service_principal_id = azuread_service_principal.eco-test.id
+  end_date_relative    = "2400h30m"
+}
+
 output "test_app" {
   value = azuread_application.eco-test.display_name
 }

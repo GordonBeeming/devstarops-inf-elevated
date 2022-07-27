@@ -27,6 +27,11 @@ resource "azuread_application_federated_identity_credential" "eco-production" {
   subject               = "repo:DevStarOps/devstarops-edge:environment:production"
 }
 
+resource "azuread_service_principal_password" "eco-production" {
+  service_principal_id = azuread_service_principal.eco-production.id
+  end_date_relative    = "2400h30m"
+}
+
 output "production_app" {
   value = azuread_application.eco-production.display_name
 }
