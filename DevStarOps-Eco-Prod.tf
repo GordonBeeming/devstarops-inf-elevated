@@ -24,7 +24,7 @@ resource "azuread_application_federated_identity_credential" "eco-production" {
   description           = "Deployments for devstarops-edge"
   audiences             = ["api://AzureADTokenExchange"]
   issuer                = "https://token.actions.githubusercontent.com"
-  subject               = "repo:DevStarOps/devstarops-edge:environment:prod"
+  subject               = "repo:DevStarOps/devstarops-edge:environment:production"
 }
 
 output "production_app" {
