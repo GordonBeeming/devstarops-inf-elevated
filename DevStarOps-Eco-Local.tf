@@ -18,9 +18,13 @@ resource "azurerm_role_assignment" "rg-local-owner" {
   principal_id         = azuread_service_principal.eco-local.object_id
 }
 
-resource "azuread_directory_role_assignment" "directory-local-reader" {
-  role_id             = azuread_directory_role.directory-reader.template_id
-  principal_object_id = azuread_service_principal.eco-local.object_id
+resource "azuread_application_federated_identity_credential" "eco-local" {
+  application_object_id = azuread_application.eco-local.object_id
+  display_name          = "devstarops-edge"
+  description           = "Deployments for devstarops-edge"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-edge:environment:local"
 }
 
 output "local_app" {
