@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "shared-storage-local-reader" {
 }
 
 resource "azurerm_role_assignment" "rg-local-owner" {
-  scope                = data.azurerm_resource_group.local.id
+  scope                = azurerm_resource_group.local.id
   role_definition_name = "Owner"
   principal_id         = azuread_service_principal.eco-local.object_id
 }
