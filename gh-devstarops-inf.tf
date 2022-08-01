@@ -171,3 +171,18 @@ resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_API_TOKE
   secret_name      = "CLOUDFLARE_API_TOKEN"
   plaintext_value  = var.cloudflare_api_token
 }
+
+
+# GITHUB_TOKEN
+resource "github_actions_environment_secret" "test-inf-GITHUB_TOKEN" {
+  repository       = data.github_repository.devstarops-inf.id
+  environment      = github_repository_environment.test-inf.environment
+  secret_name      = "GH_TOKEN"
+  plaintext_value  = var.github_token
+}
+resource "github_actions_environment_secret" "production-inf-GITHUB_TOKEN" {
+  repository       = data.github_repository.devstarops-inf.id
+  environment      = github_repository_environment.production-inf.environment
+  secret_name      = "GH_TOKEN"
+  plaintext_value  = var.github_token
+}
