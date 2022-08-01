@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "shared-storage-production-reader" {
 }
 
 resource "azurerm_role_assignment" "rg-production-owner" {
-  scope                = data.azurerm_resource_group.production.id
+  scope                = azurerm_resource_group.production.id
   role_definition_name = "Owner"
   principal_id         = azuread_service_principal.eco-production.object_id
 }

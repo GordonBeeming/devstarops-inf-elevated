@@ -13,7 +13,7 @@ resource "azurerm_role_assignment" "shared-storage-test-reader" {
 }
 
 resource "azurerm_role_assignment" "rg-test-owner" {
-  scope                = data.azurerm_resource_group.test.id
+  scope                = azurerm_resource_group.test.id
   role_definition_name = "Owner"
   principal_id         = azuread_service_principal.eco-test.object_id
 }
