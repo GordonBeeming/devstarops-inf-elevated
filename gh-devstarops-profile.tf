@@ -8,9 +8,27 @@ resource "github_repository_environment" "local-profile" {
   repository   = data.github_repository.devstarops-profile.id
 }
 
+resource "azuread_application_federated_identity_credential" "eco-local-profile" {
+  application_object_id = azuread_application.eco-local.object_id
+  display_name          = "devstarops-profile"
+  description           = "Deployments for devstarops-profile"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-profile:environment:local"
+}
+
 resource "github_repository_environment" "test-profile" {
   environment  = "test"
   repository   = data.github_repository.devstarops-profile.id
+}
+
+resource "azuread_application_federated_identity_credential" "eco-test-profile" {
+  application_object_id = azuread_application.eco-test.object_id
+  display_name          = "devstarops-profile"
+  description           = "Deployments for devstarops-profile"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-profile:environment:test"
 }
 
 resource "github_repository_environment" "production-profile" {
@@ -18,8 +36,16 @@ resource "github_repository_environment" "production-profile" {
   repository   = data.github_repository.devstarops-profile.id
   reviewers {
     users = [data.github_user.current.id]
-  }
-  
+  }  
+}
+
+resource "azuread_application_federated_identity_credential" "eco-production-profile" {
+  application_object_id = azuread_application.eco-production.object_id  
+  display_name          = "devstarops-profile"
+  description           = "Deployments for devstarops-profile"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-profile:environment:production"
 }
 
 # ARM_CLIENT_ID

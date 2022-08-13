@@ -8,9 +8,27 @@ resource "github_repository_environment" "local-edge" {
   repository   = data.github_repository.devstarops-edge.id
 }
 
+resource "azuread_application_federated_identity_credential" "eco-local-edge" {
+  application_object_id = azuread_application.eco-local.object_id
+  display_name          = "devstarops-edge"
+  description           = "Deployments for devstarops-edge"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-edge:environment:local"
+}
+
 resource "github_repository_environment" "test-edge" {
   environment  = "test"
   repository   = data.github_repository.devstarops-edge.id
+}
+
+resource "azuread_application_federated_identity_credential" "eco-test-edge" {
+  application_object_id = azuread_application.eco-test.object_id
+  display_name          = "devstarops-edge"
+  description           = "Deployments for devstarops-edge"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-edge:environment:test"
 }
 
 resource "github_repository_environment" "production-edge" {
@@ -18,8 +36,16 @@ resource "github_repository_environment" "production-edge" {
   repository   = data.github_repository.devstarops-edge.id
   reviewers {
     users = [data.github_user.current.id]
-  }
-  
+  }  
+}
+
+resource "azuread_application_federated_identity_credential" "eco-production-edge" {
+  application_object_id = azuread_application.eco-production.object_id  
+  display_name          = "devstarops-edge"
+  description           = "Deployments for devstarops-edge"
+  audiences             = ["api://AzureADTokenExchange"]
+  issuer                = "https://token.actions.githubusercontent.com"
+  subject               = "repo:DevStarOps/devstarops-edge:environment:production"
 }
 
 # ARM_CLIENT_ID
