@@ -17,6 +17,15 @@ resource "github_repository_environment" "production-inf" {
   
 }
 
+resource "github_branch_protection" "devstarops-inf-main" {
+  repository_id = data.github_repository.devstarops-inf.id
+  pattern          = "main"
+  enforce_admins   = true
+  require_signed_commits = true
+}
+
+## Secrets
+
 # ARM_CLIENT_ID
 resource "github_actions_environment_secret" "test-inf-ARM_CLIENT_ID" {
   repository       = data.github_repository.devstarops-inf.id

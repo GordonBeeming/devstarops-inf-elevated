@@ -39,6 +39,13 @@ resource "github_repository_environment" "production-demos" {
   }  
 }
 
+resource "github_branch_protection" "devstarops-demos-main" {
+  repository_id = data.github_repository.devstarops-demos.id
+  pattern          = "main"
+  enforce_admins   = true
+  require_signed_commits = true
+}
+
 resource "azuread_application_federated_identity_credential" "eco-production-demos" {
   application_object_id = azuread_application.eco-production.object_id  
   display_name          = "devstarops-demos"
@@ -47,6 +54,8 @@ resource "azuread_application_federated_identity_credential" "eco-production-dem
   issuer                = "https://token.actions.githubusercontent.com"
   subject               = "repo:DevStarOps/devstarops-demos:environment:production"
 }
+
+## Secrets
 
 # ARM_CLIENT_ID
 resource "github_actions_environment_secret" "local-demos-ARM_CLIENT_ID" {

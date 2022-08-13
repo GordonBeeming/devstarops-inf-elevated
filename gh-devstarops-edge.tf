@@ -39,6 +39,13 @@ resource "github_repository_environment" "production-edge" {
   }  
 }
 
+resource "github_branch_protection" "devstarops-edge-main" {
+  repository_id = data.github_repository.devstarops-edge.id
+  pattern          = "main"
+  enforce_admins   = true
+  require_signed_commits = true
+}
+
 resource "azuread_application_federated_identity_credential" "eco-production-edge" {
   application_object_id = azuread_application.eco-production.object_id  
   display_name          = "devstarops-edge"
@@ -47,6 +54,8 @@ resource "azuread_application_federated_identity_credential" "eco-production-edg
   issuer                = "https://token.actions.githubusercontent.com"
   subject               = "repo:DevStarOps/devstarops-edge:environment:production"
 }
+
+## Secrets
 
 # ARM_CLIENT_ID
 resource "github_actions_environment_secret" "local-edge-ARM_CLIENT_ID" {
