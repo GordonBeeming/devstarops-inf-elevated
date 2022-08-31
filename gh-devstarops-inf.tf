@@ -195,3 +195,18 @@ resource "github_actions_environment_secret" "production-inf-GITHUB_TOKEN" {
   secret_name      = "GH_TOKEN"
   plaintext_value  = var.github_token
 }
+
+
+# SNYK_TOKEN
+resource "github_actions_environment_secret" "test-inf-SNYK_TOKEN" {
+  repository       = data.github_repository.devstarops-inf.id
+  environment      = github_repository_environment.test-inf.environment
+  secret_name      = "SNYK_TOKEN"
+  plaintext_value  = var.snyk_token
+}
+resource "github_actions_environment_secret" "production-inf-SNYK_TOKEN" {
+  repository       = data.github_repository.devstarops-inf.id
+  environment      = github_repository_environment.production-inf.environment
+  secret_name      = "SNYK_TOKEN"
+  plaintext_value  = var.snyk_token
+}

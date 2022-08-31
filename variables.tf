@@ -63,3 +63,7 @@ variable "cloudflare_service_key" {
 variable "cloudflare_zone_id" {
   type = string
 }
+
+variable "snyk_token" {
+  type = string
+}
