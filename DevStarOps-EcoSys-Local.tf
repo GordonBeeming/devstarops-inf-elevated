@@ -1,5 +1,5 @@
 resource "azuread_application" "eco-local" {
-  display_name = "DevStarOps-Eco-Local"
+  display_name = "DevStarOps-EcoSys-Local"
 }
 
 resource "azuread_service_principal" "eco-local" {

@@ -1,5 +1,5 @@
 resource "azuread_application" "eco-production" {
-  display_name = "DevStarOps-Eco-Prod"
+  display_name = "DevStarOps-EcoSys-Prod"
 }
 
 resource "azuread_service_principal" "eco-production" {
