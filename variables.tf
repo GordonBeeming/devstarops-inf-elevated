@@ -55,7 +55,7 @@ variable "cloudflare_api_token" {
   sensitive = true
 }
 
-variable "cloudflare_service_key" {
+variable "cloudflare_origin_ca_key" {
   type = string
   sensitive = true
 }

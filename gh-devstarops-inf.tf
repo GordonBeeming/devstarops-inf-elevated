@@ -158,13 +158,13 @@ resource "github_actions_environment_secret" "test-inf-CLOUDFLARE_SERVICE_KEY" {
   repository       = data.github_repository.devstarops-inf.id
   environment      = github_repository_environment.test-inf.environment
   secret_name      = "CLOUDFLARE_SERVICE_KEY"
-  plaintext_value  = var.cloudflare_service_key
+  plaintext_value  = var.cloudflare_origin_ca_key
 }
 resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_SERVICE_KEY" {
   repository       = data.github_repository.devstarops-inf.id
   environment      = github_repository_environment.production-inf.environment
   secret_name      = "CLOUDFLARE_SERVICE_KEY"
-  plaintext_value  = var.cloudflare_service_key
+  plaintext_value  = var.cloudflare_origin_ca_key
 }
 
 # CLOUDFLARE_API_TOKEN
