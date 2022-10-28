@@ -50,12 +50,12 @@ variable "production_app1_admin_password" {
   sensitive = true
 }
 
-variable "cloudflare_api_token" {
+variable "cloudflare_email" {
   type = string
   sensitive = true
 }
 
-variable "cloudflare_origin_ca_key" {
+variable "cloudflare_api_key" {
   type = string
   sensitive = true
 }

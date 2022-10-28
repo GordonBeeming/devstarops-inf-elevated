@@ -153,32 +153,32 @@ resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_ZONE_ID"
   plaintext_value  = var.cloudflare_zone_id
 }
 
-# CLOUDFLARE_SERVICE_KEY
-resource "github_actions_environment_secret" "test-inf-CLOUDFLARE_SERVICE_KEY" {
+# CLOUDFLARE_EMAIL
+resource "github_actions_environment_secret" "test-inf-CLOUDFLARE_EMAIL" {
   repository       = data.github_repository.devstarops-inf.id
   environment      = github_repository_environment.test-inf.environment
-  secret_name      = "CLOUDFLARE_SERVICE_KEY"
-  plaintext_value  = var.cloudflare_origin_ca_key
+  secret_name      = "CLOUDFLARE_EMAIL"
+  plaintext_value  = var.cloudflare_email
 }
-resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_SERVICE_KEY" {
+resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_EMAIL" {
   repository       = data.github_repository.devstarops-inf.id
   environment      = github_repository_environment.production-inf.environment
-  secret_name      = "CLOUDFLARE_SERVICE_KEY"
-  plaintext_value  = var.cloudflare_origin_ca_key
+  secret_name      = "CLOUDFLARE_EMAIL"
+  plaintext_value  = var.cloudflare_email
 }
 
-# CLOUDFLARE_API_TOKEN
-resource "github_actions_environment_secret" "test-inf-CLOUDFLARE_API_TOKEN" {
+# CLOUDFLARE_API_KEY
+resource "github_actions_environment_secret" "test-inf-CLOUDFLARE_API_KEY" {
   repository       = data.github_repository.devstarops-inf.id
   environment      = github_repository_environment.test-inf.environment
-  secret_name      = "CLOUDFLARE_API_TOKEN"
-  plaintext_value  = var.cloudflare_api_token
+  secret_name      = "CLOUDFLARE_API_KEY"
+  plaintext_value  = var.cloudflare_api_key
 }
-resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_API_TOKEN" {
+resource "github_actions_environment_secret" "production-inf-CLOUDFLARE_API_KEY" {
   repository       = data.github_repository.devstarops-inf.id
   environment      = github_repository_environment.production-inf.environment
-  secret_name      = "CLOUDFLARE_API_TOKEN"
-  plaintext_value  = var.cloudflare_api_token
+  secret_name      = "CLOUDFLARE_API_KEY"
+  plaintext_value  = var.cloudflare_api_key
 }
 
 
